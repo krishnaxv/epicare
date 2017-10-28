@@ -1,4 +1,4 @@
-# Healthcare
+# Epicare
 
 > v0.1.0
 
