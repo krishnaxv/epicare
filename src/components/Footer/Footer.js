@@ -4,7 +4,7 @@ import NavList from './NavList';
 
 const fadeIn = keyframes`
   from {
-    transform: translateY(32px);
+    transform: translateY(56px);
   }
   to {
     transform: translateY(0);

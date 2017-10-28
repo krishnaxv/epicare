@@ -13,11 +13,13 @@ const Time = styled.div`
 
 const Event = styled.div``;
 
-const DayViewItem = props => (
-  <Wrapper>
-    <Time>{props.item}</Time>
-    <Event>Event</Event>
-  </Wrapper>
-);
+const DayViewItem = props => {
+  return (
+    <Wrapper>
+      <Time>{props.timeOffset}</Time>
+      <Event>Event</Event>
+    </Wrapper>
+  );
+};
 
 export default DayViewItem;

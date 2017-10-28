@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import { map } from 'lodash';
 // import { Link } from 'react-router-dom';
 
-const List = styled.ul`display: flex;`;
+const List = styled.ul`
+  display: flex;
+  height: 56px;
+`;
 
 const Icon = styled.i`
   font-size: 1.6rem;
