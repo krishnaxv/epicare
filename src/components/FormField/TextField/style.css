@@ -1,0 +1,8 @@
+.app-textfield--wrapper .mdc-textfield {
+  height: 36px !important;
+  width: 100%;
+}
+
+.mdc-textfield > input {
+  width: 100%;
+}

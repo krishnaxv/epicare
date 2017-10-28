@@ -11,7 +11,10 @@
     "react-scripts": "^1.0.13"
   },
   "dependencies": {
+    "@material/button": "^0.23.0",
+    "@material/select": "^0.23.0",
     "@material/tabs": "^0.23.0",
+    "@material/textfield": "^0.23.0",
     "date-fns": "^1.29.0",
     "history": "^4.7.2",
     "lodash": "^4.17.4",

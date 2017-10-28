@@ -1,0 +1,33 @@
+.login__container {
+  margin: 0 auto;
+  max-width: 320px;
+  width: 100%;
+}
+
+.logo__container--primary {
+  text-align: center;
+  margin: 100px auto 20px;
+}
+
+.logo__container--primary,
+.form__container--login {
+  padding: 0 16px 16px 16px;
+  width: 100%;
+}
+
+.logo__container--primary .logo--primary {
+  width: 100%;
+}
+
+.form__container--login {
+  background-color: #fff;
+}
+
+.form__container--login > form {
+  margin-top: 16px;
+}
+
+.form__container--login > form button.mdc-button {
+  margin-top: 16px;
+  width: 100%;
+}

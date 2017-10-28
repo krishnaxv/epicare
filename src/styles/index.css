@@ -10,7 +10,8 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-body {
+body,
+p {
   font-size: 1.4rem;
 }
 
@@ -28,8 +29,4 @@ ul {
 
 ul {
   list-style: none;
-}
-
-p {
-  font-size: 1.4rem;
 }
