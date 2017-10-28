@@ -8,7 +8,7 @@ const patientAPI = {
 const getPatients = () => HTTPService.request(patientAPI.getPatients);
 
 const getPatientData = patientId => {
-  const requestURL = interpolateURL(patientAPI.getUserProjects, {
+  const requestURL = interpolateURL(patientAPI.getPatientData, {
     patientId
   });
   return HTTPService.request(requestURL);

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 // Absolute imports
 import Chip from '../Chip';
+import patientHelper from '../../helpers/patientHelper';
 
 const Wrapper = styled.div`display: flex;`;
 
@@ -15,11 +16,12 @@ const AppHeader = styled.header`
   align-items: center;
   width: 100%;
   padding: 16px;
+  border-bottom: 1px solid #e1e4e7;
 `;
 
 const Avatar = styled.img`
-  width: 120px;
-  height: 120px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 `;
 
@@ -78,28 +80,71 @@ const SecondaryBody = styled.div`
   }
 `;
 
-const PatientName = props => <div>{props.name}, </div>;
+const PatientName = props => <div style={props.style}>{props.name}</div>;
 
 class Header extends Component {
+  constructor() {
+    super();
+    this.state = { patient: {} };
+  }
+
+  componentDidMount() {
+    patientHelper
+      .getPatientData('P001')
+      .then(res => {
+        this.setState({ patient: res });
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  }
+
   render() {
+    const patient = this.state.patient;
+    const patientName = {
+      fontSize: 16,
+      fontWeight: 500
+    };
+
+    const patientDetails = {
+      color: '#8c8c8c'
+    };
+
     return (
       <Wrapper>
         <AppHeader>
           <Avatar src="https://avatars3.githubusercontent.com/u/8594438?s=460&v=4" />
           <PatientDemographic>
             <PrimaryBody>
-              <PatientName name="John Corbett" />
-              <Chip text="P7856487" />
+              <PatientName
+                style={patientName}
+                name={`${patient.lastName}, ${patient.firstName}`}
+              />
+              <Chip text={patient.empi} />
             </PrimaryBody>
             <SecondaryBody>
               <div>
-                <p>Female,</p>
-                <p>52 yrs,</p>
-                <p>Born on 02/01/1963</p>
+                {patient.gender && (
+                  <p style={patientDetails}>{patient.gender},</p>
+                )}
+                {patient.age && (
+                  <p style={patientDetails}>{patient.age} yrs,</p>
+                )}
+                {patient.dob && (
+                  <p style={patientDetails}>Born on {patient.dob}</p>
+                )}
               </div>
               <div>
-                <Chip text="High Risk" icon="favorite" />
-                <Chip text="3 Care Gaps" icon="opacity" />
+                <Chip
+                  className="chip primary"
+                  text="High Risk"
+                  icon="favorite"
+                />
+                <Chip
+                  className="chip primary"
+                  text="3 Care Gaps"
+                  icon="opacity"
+                />
               </div>
             </SecondaryBody>
           </PatientDemographic>

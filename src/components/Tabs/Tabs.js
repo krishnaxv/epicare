@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '@material/tabs/dist/mdc.tabs.css';
 import { MDCTabBar } from '@material/tabs/dist/mdc.tabs';
+import PanelContainer from '../TabsSection';
 
 const tabList = [
   {
@@ -52,9 +53,13 @@ class Tabs extends Component {
   }
 
   render() {
+    const NavShadow = {
+      boxShadow:
+        '0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 1px 1px 0px, rgba(0, 0, 0, 0.14) 0px 1px 3px 0px'
+    };
     return (
       <div>
-        <section>
+        <section style={NavShadow}>
           <nav
             ref={tabs => {
               this.tabs = tabs;
@@ -92,15 +97,7 @@ class Tabs extends Component {
               this.panels = panels;
             }}
           >
-            <p className="panel active" hidden id="summary" role="tabpanel">
-              Item One
-            </p>
-            <p className="panel" hidden id="clinical-data" role="tabpanel">
-              Item Two
-            </p>
-            <p className="panel" hidden id="care-team" role="tabpanel">
-              Item Three
-            </p>
+            <PanelContainer />
           </div>
         </section>
       </div>

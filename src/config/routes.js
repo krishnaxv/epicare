@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from '../components/App/AppComponent';
 import LoginContainer from '../components/Login';
 import Main from '../components/Main/MainComponent';
-import Tabs from '../components/Tabs';
+import ClinicalOverview from '../components/ClinicalOverview/ClinicalOverviewContainer';
 import Agenda from '../components/Agenda';
 
 const routes = () => (
