@@ -4,11 +4,10 @@ import NavList from './NavList';
 
 const fadeIn = keyframes`
   from {
-    bottom: -32px;
+    transform: translateY(32px);
   }
-
   to {
-    bottom: 0px;
+    transform: translateY(0);
   }
 `;
 
@@ -17,8 +16,8 @@ const Wrapper = styled.footer`
   position: fixed;
   bottom: 0;
   animation: ${fadeIn} 0.5s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  padding-top: 8px;
+  z-index: 99999;
+  background-color: #fff;
 `;
 
 const optionList = [
@@ -58,7 +57,7 @@ class Footer extends Component {
 
   render() {
     return (
-      <Wrapper>
+      <Wrapper className="mdc-elevation--z4">
         <NavList list={optionList} activeLink={this.state.activeLink} />
       </Wrapper>
     );

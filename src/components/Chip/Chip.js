@@ -10,7 +10,10 @@ const Wrapper = styled.div`
   border-radius: 32px;
 `;
 
-const Icon = styled.i`margin-right: 8px;`;
+const Icon = styled.i`
+  font-size: 1.6rem;
+  margin-right: 8px;
+`;
 
 const Chip = props => (
   <Wrapper style={props.style}>

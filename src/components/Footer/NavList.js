@@ -18,6 +18,7 @@ const ListItem = styled.li`
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid #98466f;
+  padding: 8px;
 `;
 
 const ListLink = ({ icon, displayName, linkTo }) => (

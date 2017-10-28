@@ -54,7 +54,7 @@ class Tabs extends Component {
   render() {
     return (
       <div>
-        <section>
+        <section className="mdc-elevation--z1">
           <nav
             ref={tabs => {
               this.tabs = tabs;
@@ -92,15 +92,15 @@ class Tabs extends Component {
               this.panels = panels;
             }}
           >
-            <p className="panel active" hidden id="summary" role="tabpanel">
+            <div className="panel active" hidden id="summary" role="tabpanel">
               Item One
-            </p>
-            <p className="panel" hidden id="clinical-data" role="tabpanel">
+            </div>
+            <div className="panel" hidden id="clinical-data" role="tabpanel">
               Item Two
-            </p>
-            <p className="panel" hidden id="care-team" role="tabpanel">
+            </div>
+            <div className="panel" hidden id="care-team" role="tabpanel">
               Item Three
-            </p>
+            </div>
           </div>
         </section>
       </div>
