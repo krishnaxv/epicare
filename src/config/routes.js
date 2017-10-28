@@ -5,7 +5,7 @@ import App from '../components/App/AppComponent';
 import Main from '../components/Main/MainComponent';
 // import Tabs from '../components/Tabs/Tabs';
 import ClinicalOverview from '../components/ClinicalOverview/ClinicalOverviewContainer';
-import { DayView } from '../Calendar';
+import Agenda from '../components/Agenda';
 
 const history = createBrowserHistory();
 
@@ -14,7 +14,7 @@ const routes = () => (
     <App>
       <Route exact path="/">
         <Main>
-          <Route exact path="/" component={DayView} />
+          <Route exact path="/" component={Agenda} />
           <Route
             exact
             path="/patients/:id/clinical-overview"

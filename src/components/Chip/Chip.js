@@ -2,12 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  background-color: #e5e5e5;
+  background-color: #ececec;
   display: flex;
   align-items: center;
-  padding: 4px 8px;
-  height: 32px;
+  padding: 5px 10px;
   border-radius: 32px;
+
+  &.chip.primary {
+    background-color: #80184c;
+    color: #fff;
+  }
 `;
 
 const Icon = styled.i`
@@ -16,7 +20,7 @@ const Icon = styled.i`
 `;
 
 const Chip = props => (
-  <Wrapper style={props.style}>
+  <Wrapper style={props.style} className={props.className}>
     {props.icon && <Icon className="material-icons">{props.icon}</Icon>}
     {props.text}
   </Wrapper>
