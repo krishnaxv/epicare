@@ -209,7 +209,7 @@
 
 "@material/tabs@^0.23.0":
   version "0.23.0"
-  resolved "https://registry.yarnpkg.com/@material/tabs/-/tabs-0.23.0.tgz#449c9de2c2a669c2f9c597266f5270dc95597978"
+  resolved "http://52.35.230.55/@material%2ftabs/-/tabs-0.23.0.tgz#449c9de2c2a669c2f9c597266f5270dc95597978"
   dependencies:
     "@material/animation" "^0.4.1"
     "@material/base" "^0.2.6"
