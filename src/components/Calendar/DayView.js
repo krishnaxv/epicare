@@ -20,7 +20,7 @@ class DayView extends Component {
             new Date(
               toInteger(format(startOfDayTS, 'x')) + toInteger(timeOffset)
             ),
-            'HH mm A'
+            'HH:mm A'
           );
           return <DayViewItem key={index} timeOffset={toString(time)} />;
         })}
