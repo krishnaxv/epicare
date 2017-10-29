@@ -162,14 +162,43 @@ const AllergiesTemplate = () => {
   );
 };
 
-const VitalWrapper = styled.div``;
+const VitalWrapper = styled.div`
+  ul {
+    li {
+      div.vital-value {
+        color: #d93737;
+        font-size: 2.2rem;
+      }
+      div.vital-name {
+        font-size: 1.8rem;
+      }
+      div.vital-date {
+        color: #8c8c8c;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 10px;
+
+        div.vital-date {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+`;
 
 const VitalTemplate = () => {
   return (
     <VitalWrapper>
       <ul>
         {vitals.map((vital, i) => {
-          return <li key={i}>{vital.value}</li>;
+          return (
+            <li key={i}>
+              <div className="vital-value">{vital.value}</div>
+              <div className="vital-name">{vital.displayName}</div>
+              <div className="vital-date">{vital.date}</div>
+            </li>
+          );
         })}
       </ul>
     </VitalWrapper>

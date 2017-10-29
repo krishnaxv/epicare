@@ -40,6 +40,7 @@ const Card = styled.div`
 const CardHead = styled.div`
   font-size: 2rem;
   font-weight: 600;
+  color: #80184c;
 `;
 
 const List = styled.div`
@@ -70,21 +71,69 @@ const List = styled.div`
   }
 `;
 
+const CareTeamWrapper = styled.div`
+  background-color: #f8f8f8;
+  border-top: 1px solid #e1e4e7;
+  padding: 16px;
+
+  ul {
+    border: 1px solid #e1e4e7;
+    border-radius: 3px;
+
+    li {
+      padding: 16px;
+      background: #fff;
+      border-bottom: 1px solid #e1e4e7;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      div {
+        color: #8c8c8c;
+        font-size: 1.7rem;
+        margin-bottom: 4px;
+
+        span {
+          color: #000;
+
+          i {
+            font-size: 19px;
+            vertical-align: -4px;
+            padding-left: 5px;
+          }
+        }
+        a {
+          color: #8c8c8c;
+        }
+      }
+    }
+  }
+`;
+
 class TabsSectionContainer extends Component {
   constructor() {
     super();
-    this.state = { careGaps: [], cdiGaps: [] };
+    this.state = { careGaps: [], cdiGaps: [], careTeam: [] };
   }
   componentDidMount() {
-    /*patientHelper
+    patientHelper
       .getPatientSummary('P002')
       .then(res => {
         this.setState({ careGaps: res.careGaps, cdiGaps: res.cdiGaps });
-        console.log(this.state);
       })
       .catch(err => {
         throw new Error(err);
-      });*/
+      });
+
+    patientHelper
+      .getCareTeam('P002')
+      .then(res => {
+        this.setState({ careTeam: res.careTeam });
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
   }
   render() {
     const textSmall = {
@@ -103,7 +152,7 @@ class TabsSectionContainer extends Component {
     };
     return (
       <div style={background}>
-        <div className="panel" hidden id="summary" role="tabpanel">
+        <div className="panel active" hidden id="summary" role="tabpanel">
           <FlyerContainer>
             <Icon>
               <i className="material-icons">directions_run</i>
@@ -169,11 +218,34 @@ class TabsSectionContainer extends Component {
             </List>
           </Card>
         </div>
-        <div className="panel active" hidden id="clinical-data" role="tabpanel">
+        <div className="panel" hidden id="clinical-data" role="tabpanel">
           <AccordionList />
         </div>
         <div className="panel" hidden id="care-team" role="tabpanel">
-          Item Three
+          <CareTeamWrapper>
+            <ul>
+              {this.state.careTeam.map((member, i) => {
+                return (
+                  <li key={i}>
+                    <div>
+                      <span>Name: </span>
+                      {member.lastName}, {member.firstName}
+                    </div>
+                    <div>
+                      <span>
+                        Number<i className="material-icons">phone</i>:{' '}
+                      </span>
+                      <a href={`tel: ${member.phone}`}>{member.phone}</a>
+                    </div>
+                    <div>
+                      <span>Working Hours: </span>
+                      {member.workHours.startTime} - {member.workHours.endTime}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </CareTeamWrapper>
         </div>
       </div>
     );

@@ -9,7 +9,7 @@ const List = styled.ul`
 `;
 
 const Icon = styled.i`
-  font-size: 1.6rem;
+  font-size: 3rem;
   color: #98466f;
 `;
 
@@ -27,7 +27,7 @@ const ListItem = styled.li`
 const ListLink = ({ icon, displayName, linkTo }) => (
   <ListItem>
     <Icon className="material-icons">{icon}</Icon>
-    <p>{displayName}</p>
+    {/* <p>{displayName}</p> */}
   </ListItem>
 );
 

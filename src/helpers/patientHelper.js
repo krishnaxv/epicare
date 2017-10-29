@@ -3,7 +3,8 @@ import HTTPService, { interpolateURL } from '../services/HTTPService';
 const patientAPI = {
   getPatients: '/patients',
   getPatientData: '/patients/:patientId',
-  getPatientSummary: '/patients/:patientId/summary'
+  getPatientSummary: '/patients/:patientId/summary',
+  getCareTeam: '/patients/:patientId/care_team'
 };
 
 const getPatients = () => HTTPService.request(patientAPI.getPatients);
@@ -22,10 +23,18 @@ const getPatientSummary = patientId => {
   return HTTPService.request(requestURL);
 };
 
+const getCareTeam = patientId => {
+  const requestURL = interpolateURL(patientAPI.getCareTeam, {
+    patientId
+  });
+  return HTTPService.request(requestURL);
+};
+
 const patientHelper = {
   getPatients,
   getPatientData,
-  getPatientSummary
+  getPatientSummary,
+  getCareTeam
 };
 
 export default patientHelper;
