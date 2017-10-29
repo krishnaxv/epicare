@@ -31,14 +31,15 @@ const getCareTeam = patientId => {
   const requestURL = interpolateURL(patientAPI.getCareTeam, {
     patientId
   });
-  return HTTPService.request(requestURL);
-};
+const searchPatients = (queryString = {}) =>
+  HTTPService.request(withQueryString(patientAPI.getPatients, queryString));
 
 const patientHelper = {
   getPatients,
   getPatientData,
   getPatientSummary,
-  getCareTeam
+  getCareTeam,
+  searchPatients
 };
 
 export default patientHelper;

@@ -63,7 +63,7 @@
 
 "@material/button@^0.23.0":
   version "0.23.0"
-  resolved "https://registry.yarnpkg.com/@material/button/-/button-0.23.0.tgz#6c5c24778292ab1f13f83ee94a2c8e026b04a2d3"
+  resolved "http://52.35.230.55/@material%2fbutton/-/button-0.23.0.tgz#6c5c24778292ab1f13f83ee94a2c8e026b04a2d3"
   dependencies:
     "@material/elevation" "^0.1.13"
     "@material/ripple" "^0.23.0"
@@ -171,7 +171,7 @@
 
 "@material/list@^0.23.0":
   version "0.23.0"
-  resolved "https://registry.yarnpkg.com/@material/list/-/list-0.23.0.tgz#f2191cac7e77f375da1d5b43d2578613e8fd9b48"
+  resolved "http://52.35.230.55/@material%2flist/-/list-0.23.0.tgz#f2191cac7e77f375da1d5b43d2578613e8fd9b48"
   dependencies:
     "@material/ripple" "^0.23.0"
     "@material/rtl" "^0.1.8"
