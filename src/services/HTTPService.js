@@ -1,12 +1,20 @@
-import { assign, extend, forOwn, has, replace } from 'lodash';
-import { getIdToken, getUserId } from '../services/firebaseService';
+import { assign, extend, forOwn, has, replace, reduce, size } from 'lodash';
+import { getIdToken } from '../services/firebaseService';
+import { objectToQueryString } from '../utils';
 
-export const interpolateURL = (URL, options) => {
-  let returnURL = '';
-  forOwn(options, (value, key) => {
-    returnURL = replace(URL, `:${key}`, value);
-  });
-  return returnURL;
+export const interpolateURL = (URL, options) =>
+  reduce(
+    options,
+    (returnURL, value, key) => replace(returnURL, `:${key}`, value),
+    URL
+  );
+
+export const withQueryString = (baseURL, queryObject) => {
+  let queryString = objectToQueryString(queryObject);
+  if (size(queryString) > 0) {
+    queryString = `?${queryString}`;
+  }
+  return `${baseURL}${queryString}`;
 };
 
 const HTTPService = {

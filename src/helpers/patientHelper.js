@@ -1,11 +1,15 @@
-import HTTPService, { interpolateURL } from '../services/HTTPService';
+import HTTPService, {
+  interpolateURL,
+  withQueryString
+} from '../services/HTTPService';
 
 const patientAPI = {
   getPatients: '/patients',
   getPatientData: '/patients/:patientId'
 };
 
-const getPatients = () => HTTPService.request(patientAPI.getPatients);
+const getPatients = (queryString = {}) =>
+  HTTPService.request(withQueryString(patientAPI.getPatients, queryString));
 
 const getPatientData = patientId => {
   const requestURL = interpolateURL(patientAPI.getPatientData, {

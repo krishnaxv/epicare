@@ -32,15 +32,9 @@ class AgendaContainer extends Component {
     //     })
     //     .catch(error => console.log(error));
     // });
-    patientHelper
-      .getPatients()
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => console.log(error));
   }
 
-  addEvent() {
+  addEvent(timeOffset) {
     this.setState({
       addEvent: true
     });
@@ -62,9 +56,7 @@ class AgendaContainer extends Component {
     return (
       <Agenda
         eventList={this.state.eventList}
-        onClick={() => this.addEvent()}
-        onAccept={() => this.handleAccept()}
-        onCancel={() => this.handleCancel()}
+        onClick={timeOffset => this.addEvent(timeOffset)}
         addEvent={this.state.addEvent}
       />
     );

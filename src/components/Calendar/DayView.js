@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { chain, map, range, toString, toInteger } from 'lodash';
+import { chain, map, range, toInteger } from 'lodash';
 import { format, startOfDay } from 'date-fns';
 import { DayViewItem } from './';
 
@@ -18,7 +18,6 @@ class DayView extends Component {
         {map(timeslotOffsetList, (timeOffsetMS, index) => {
           const time =
             toInteger(format(startOfDayTS, 'x')) + toInteger(timeOffsetMS);
-          const timeOffset = format(new Date(time), 'HH:mm A');
 
           // Format prop
           const eventItem = {
@@ -26,7 +25,7 @@ class DayView extends Component {
               .filter(event => time === event.startTime)
               .first()
               .value(),
-            timeOffset: toString(timeOffset)
+            timeOffset: time
           };
 
           return (

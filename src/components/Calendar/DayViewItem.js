@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { format } from 'date-fns';
 import { EventView } from './';
 
 const Wrapper = styled.li`
@@ -26,14 +27,16 @@ class DayViewItem extends Component {
     super(props);
   }
 
-  addEvent() {}
+  handleClickEvent(timeOffset) {
+    this.props.onClick(timeOffset);
+  }
 
   render() {
-    const { item, onClick } = this.props;
+    const { item } = this.props;
     return (
       <Wrapper>
-        <Time>{item.timeOffset}</Time>
-        <Event onClick={onClick}>
+        <Time>{format(new Date(item.timeOffset), 'HH:mm A')}</Time>
+        <Event onClick={() => this.handleClickEvent(item.timeOffset)}>
           {item.event && <EventView event={item.event} />}
         </Event>
       </Wrapper>

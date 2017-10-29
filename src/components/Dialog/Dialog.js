@@ -10,13 +10,9 @@ class Dialog extends Component {
   componentDidMount() {
     const dialog = new MDCDialog(this.dialog);
 
-    dialog.listen('MDCDialog:accept', () => {
-      this.props.onAccept();
-    });
+    dialog.listen('MDCDialog:accept', () => {});
 
-    dialog.listen('MDCDialog:cancel', () => {
-      this.props.onCancel();
-    });
+    dialog.listen('MDCDialog:cancel', () => {});
 
     dialog.show();
   }
