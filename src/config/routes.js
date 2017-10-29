@@ -1,29 +1,32 @@
 import React from 'react';
-import { Router, Route } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from '../components/App/AppComponent';
+import LoginContainer from '../components/Login';
 import Main from '../components/Main/MainComponent';
 // import Tabs from '../components/Tabs/Tabs';
 import ClinicalOverview from '../components/ClinicalOverview/ClinicalOverviewContainer';
-import Agenda from '../components/Agenda';
-
-const history = createBrowserHistory();
+import AgendaContainer from '../components/Agenda';
 
 const routes = () => (
-  <Router history={history}>
+  <BrowserRouter>
     <App>
-      <Route exact path="/">
-        <Main>
-          <Route exact path="/" component={Agenda} />
-          <Route
-            exact
-            path="/patients/:id/clinical-overview"
-            component={ClinicalOverview}
-          />
-        </Main>
-      </Route>
+      <Switch>
+        <Route path="/login" component={LoginContainer} />
+        <Route path="/">
+          <Main>
+            <Switch>
+              <Route exact path="/" component={AgendaContainer} />
+              <Route
+                exact
+                path="/patients/:id/clinical-overview"
+                component={ClinicalOverview}
+              />
+            </Switch>
+          </Main>
+        </Route>
+      </Switch>
     </App>
-  </Router>
+  </BrowserRouter>
 );
 
 export default routes;

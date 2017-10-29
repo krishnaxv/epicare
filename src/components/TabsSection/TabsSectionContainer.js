@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { format } from 'date-fns';
 import patientHelper from '../../helpers/patientHelper';
+import AccordionList from '../AccordionList';
 
 const FlyerContainer = styled.div`
   padding: 16px;
   border-bottom: 1px solid #e1e4e7;
   display: flex;
+  background-color: #fff;
+  box-shadow: 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 1px 1px 0px,
+    rgba(0, 0, 0, 0.14) 0px 1px 3px 0px;
 
   div {
     p:first-child {
@@ -15,14 +20,25 @@ const FlyerContainer = styled.div`
 `;
 
 const Icon = styled.div`
+  font-size: 1.8rem;
   color: #f78f1e;
   margin-right: 12px;
+
+  i {
+    font-size: 28px;
+  }
 `;
 
-const Card = styled.div`padding: 16px;`;
+const Card = styled.div`
+  padding: 16px;
+  margin-bottom: 10px;
+  box-shadow: 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 1px 1px 0px,
+    rgba(0, 0, 0, 0.14) 0px 1px 3px 0px;
+  background-color: #fff;
+`;
 
 const CardHead = styled.div`
-  font-size: 16px;
+  font-size: 2rem;
   font-weight: 600;
 `;
 
@@ -32,6 +48,24 @@ const List = styled.div`
   ul {
     li {
       border-bottom: 1px solid #e1e4e7;
+      padding: 14px 0;
+
+      &:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      p {
+        font-size: 1.7rem;
+        margin-bottom: 4px;
+        font-weight: 600;
+
+        span {
+          color: #8c8c8c;
+          font-weight: 600;
+          margin-right: 8px;
+        }
+      }
     }
   }
 `;
@@ -39,47 +73,95 @@ const List = styled.div`
 class TabsSectionContainer extends Component {
   constructor() {
     super();
-    this.state = { careGaps: [] };
+    this.state = { careGaps: [], cdiGaps: [] };
   }
   componentDidMount() {
-    patientHelper
+    /*patientHelper
       .getPatientSummary('P002')
       .then(res => {
-        this.setState({ careGaps: res.careGaps });
+        this.setState({ careGaps: res.careGaps, cdiGaps: res.cdiGaps });
         console.log(this.state);
       })
       .catch(err => {
         throw new Error(err);
-      });
+      });*/
   }
   render() {
     const textSmall = {
       color: '#8c8c8c',
-      fontSize: 12
+      fontSize: '1.6rem'
+    };
+
+    const textBold = {
+      fontSize: '1.8rem',
+      fontWeight: 600
+    };
+
+    const background = {
+      backgroundColor: '#f8f8f8',
+      marginBottom: '60px'
     };
     return (
-      <div>
-        <div className="panel active" hidden id="summary" role="tabpanel">
+      <div style={background}>
+        <div className="panel" hidden id="summary" role="tabpanel">
           <FlyerContainer>
             <Icon>
-              <i className="material-icons">directions_walk</i>
+              <i className="material-icons">directions_run</i>
             </Icon>
             <div>
-              <p>Frequent Flyer</p>
+              <p style={textBold}>Frequent Flyer</p>
               <p style={textSmall}>
                 <span>3 ED Visits</span> in 12 months.
               </p>
             </div>
           </FlyerContainer>
           <Card>
-            <CardHead>Measures not met</CardHead>
+            <CardHead>Measures Not Met</CardHead>
             <List>
               <ul>
                 {this.state.careGaps.map((gaps, i) => {
                   return (
                     <li key={i}>
-                      <p>{gaps.measureName}</p>
-                      <p>{gaps.testDate}</p>
+                      {gaps.measureName && <p>{gaps.measureName}</p>}
+                      {gaps.testDate && (
+                        <p>
+                          <span>Last Test Date: </span>
+                          {format(new Date(gaps.testDate), 'MM/DD/YYYY')}
+                        </p>
+                      )}
+                      {gaps.testScore && (
+                        <p>
+                          <span>Test Result: </span>
+                          {gaps.testScore}
+                        </p>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </List>
+          </Card>
+
+          <Card>
+            <CardHead>Clinical Documentation Gap</CardHead>
+            <List>
+              <ul>
+                {this.state.cdiGaps.map((gaps, i) => {
+                  return (
+                    <li key={i}>
+                      {gaps.name && <p>{gaps.name}</p>}
+                      {gaps.recordDate && (
+                        <p>
+                          <span>Last Recorded: </span>
+                          {format(new Date(gaps.recordDate), 'MM/DD/YYYY')}
+                        </p>
+                      )}
+                      {gaps.testScore && (
+                        <p>
+                          <span>Test Result: </span>
+                          {gaps.testScore}
+                        </p>
+                      )}
                     </li>
                   );
                 })}
@@ -87,8 +169,8 @@ class TabsSectionContainer extends Component {
             </List>
           </Card>
         </div>
-        <div className="panel" hidden id="clinical-data" role="tabpanel">
-          Item Two
+        <div className="panel active" hidden id="clinical-data" role="tabpanel">
+          <AccordionList />
         </div>
         <div className="panel" hidden id="care-team" role="tabpanel">
           Item Three

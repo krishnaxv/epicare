@@ -101,12 +101,13 @@ class Header extends Component {
   render() {
     const patient = this.state.patient;
     const patientName = {
-      fontSize: 16,
+      fontSize: '2rem',
       fontWeight: 500
     };
 
     const patientDetails = {
-      color: '#8c8c8c'
+      color: '#8c8c8c',
+      fontSize: '1.7rem'
     };
 
     return (

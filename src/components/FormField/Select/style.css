@@ -1,0 +1,10 @@
+.mdc-select,
+.mdc-select .mdc-list,
+.mdc-select .mdc-simple-menu {
+  min-width: 120px;
+}
+
+.mdc-select .mdc-simple-menu {
+  overflow: auto;
+  z-index: 99999;
+}
