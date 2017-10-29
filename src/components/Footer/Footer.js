@@ -24,7 +24,7 @@ const optionList = [
   {
     id: 1,
     displayName: 'Calender',
-    icon: 'favorite',
+    icon: 'perm_contact_calendar',
     linkTo: 'calender'
   },
   {

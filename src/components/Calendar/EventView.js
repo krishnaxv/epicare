@@ -14,7 +14,7 @@ class EventView extends Component {
   }
 
   render() {
-    return <Wrapper />;
+    return <Wrapper>{this.props.children}</Wrapper>;
   }
 }
 

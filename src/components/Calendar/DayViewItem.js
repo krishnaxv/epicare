@@ -29,12 +29,13 @@ class DayViewItem extends Component {
   addEvent() {}
 
   render() {
-    const { timeOffset, event, onClick } = this.props;
+    const { event, onClick } = this.props;
+    console.log(event);
     return (
       <Wrapper>
-        <Time>{timeOffset}</Time>
+        <Time>{event.timeOffset}</Time>
         <Event onClick={() => onClick()}>
-          <EventView>{event}</EventView>
+          <EventView>{event.title}</EventView>
         </Event>
       </Wrapper>
     );

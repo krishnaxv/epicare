@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { Redirect } from 'react-router-dom';
+import { signIn } from '../../services/firebaseService';
 import { Login } from './';
 
 class LoginContainer extends Component {
@@ -7,17 +8,12 @@ class LoginContainer extends Component {
     super(props);
 
     this.state = {
-      login: {
-        email: '',
-        password: ''
-      },
+      email: '',
+      password: '',
       isLoading: false,
-      error: ''
+      error: '',
+      isAuthenticated: false
     };
-  }
-
-  componentDidMount() {
-    // this.props.checkAuth();
   }
 
   handleFormChange(event) {
@@ -31,10 +27,20 @@ class LoginContainer extends Component {
   handleSubmitLogin(e) {
     e.preventDefault();
     const { email, password } = this.state;
+    signIn(email, password).then(data => {
+      this.setState({
+        isAuthenticated: true
+      });
+    });
   }
 
   render() {
-    const { login: { isLoading, email }, password, error } = this.state;
+    const { isLoading, email, password, error, isAuthenticated } = this.state;
+
+    if (isAuthenticated) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <Login
         isLoading={isLoading}

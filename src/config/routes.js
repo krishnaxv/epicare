@@ -4,7 +4,7 @@ import App from '../components/App/AppComponent';
 import LoginContainer from '../components/Login';
 import Main from '../components/Main/MainComponent';
 import ClinicalOverview from '../components/ClinicalOverview/ClinicalOverviewContainer';
-import Agenda from '../components/Agenda';
+import AgendaContainer from '../components/Agenda';
 
 const routes = () => (
   <BrowserRouter>
@@ -14,8 +14,12 @@ const routes = () => (
         <Route path="/">
           <Main>
             <Switch>
-              <Route path="/" component={Agenda} />
-              <Route path="/patients/:id/clinical-overview" component={Tabs} />
+              <Route exact path="/" component={AgendaContainer} />
+              <Route
+                exact
+                path="/patients/:id/clinical-overview"
+                component={ClinicalOverview}
+              />
             </Switch>
           </Main>
         </Route>

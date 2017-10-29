@@ -6,7 +6,7 @@ const Wrapper = styled.div`padding-bottom: 56px;`;
 
 const Agenda = props => (
   <Wrapper>
-    <DayView />
+    <DayView eventList={props.eventList} />
   </Wrapper>
 );
 
