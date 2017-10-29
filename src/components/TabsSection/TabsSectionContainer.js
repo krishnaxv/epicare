@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import patientHelper from '../../helpers/patientHelper';
 
 const FlyerContainer = styled.div`
   padding: 16px;
@@ -18,7 +19,39 @@ const Icon = styled.div`
   margin-right: 12px;
 `;
 
+const Card = styled.div`padding: 16px;`;
+
+const CardHead = styled.div`
+  font-size: 16px;
+  font-weight: 600;
+`;
+
+const List = styled.div`
+  color: #000;
+
+  ul {
+    li {
+      border-bottom: 1px solid #e1e4e7;
+    }
+  }
+`;
+
 class TabsSectionContainer extends Component {
+  constructor() {
+    super();
+    this.state = { careGaps: [] };
+  }
+  componentDidMount() {
+    patientHelper
+      .getPatientSummary('P002')
+      .then(res => {
+        this.setState({ careGaps: res.careGaps });
+        console.log(this.state);
+      })
+      .catch(err => {
+        throw new Error(err);
+      });
+  }
   render() {
     const textSmall = {
       color: '#8c8c8c',
@@ -38,6 +71,21 @@ class TabsSectionContainer extends Component {
               </p>
             </div>
           </FlyerContainer>
+          <Card>
+            <CardHead>Measures not met</CardHead>
+            <List>
+              <ul>
+                {this.state.careGaps.map((gaps, i) => {
+                  return (
+                    <li key={i}>
+                      <p>{gaps.measureName}</p>
+                      <p>{gaps.testDate}</p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </List>
+          </Card>
         </div>
         <div className="panel" hidden id="clinical-data" role="tabpanel">
           Item Two

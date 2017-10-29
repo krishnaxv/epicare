@@ -36,7 +36,6 @@ const PrimaryBody = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-bottom: 8px;
 
   > div {
     margin-right: 8px;
@@ -116,10 +115,12 @@ class Header extends Component {
           <Avatar src="https://avatars3.githubusercontent.com/u/8594438?s=460&v=4" />
           <PatientDemographic>
             <PrimaryBody>
-              <PatientName
-                style={patientName}
-                name={`${patient.lastName}, ${patient.firstName}`}
-              />
+              {patient.lastName && (
+                <PatientName
+                  style={patientName}
+                  name={`${patient.lastName}, ${patient.firstName}`}
+                />
+              )}
               <Chip text={patient.empi} />
             </PrimaryBody>
             <SecondaryBody>
@@ -127,24 +128,26 @@ class Header extends Component {
                 {patient.gender && (
                   <p style={patientDetails}>{patient.gender},</p>
                 )}
-                {patient.age && (
-                  <p style={patientDetails}>{patient.age} yrs,</p>
-                )}
+                {patient.age && <p style={patientDetails}>{patient.age},</p>}
                 {patient.dob && (
                   <p style={patientDetails}>Born on {patient.dob}</p>
                 )}
               </div>
               <div>
-                <Chip
-                  className="chip primary"
-                  text="High Risk"
-                  icon="favorite"
-                />
-                <Chip
-                  className="chip primary"
-                  text="3 Care Gaps"
-                  icon="opacity"
-                />
+                {patient.healthInfo && (
+                  <Chip
+                    className="chip primary"
+                    text={`${patient.healthInfo.risk.displayName} Risk`}
+                    icon="favorite"
+                  />
+                )}
+                {patient.healthInfo && (
+                  <Chip
+                    className="chip primary"
+                    text={`${patient.healthInfo.careGaps} Care Gaps`}
+                    icon="opacity"
+                  />
+                )}
               </div>
             </SecondaryBody>
           </PatientDemographic>
