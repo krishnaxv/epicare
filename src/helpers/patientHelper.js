@@ -31,6 +31,8 @@ const getCareTeam = patientId => {
   const requestURL = interpolateURL(patientAPI.getCareTeam, {
     patientId
   });
+  return HTTPService.request(requestURL);
+};
 const searchPatients = (queryString = {}) =>
   HTTPService.request(withQueryString(patientAPI.getPatients, queryString));
 

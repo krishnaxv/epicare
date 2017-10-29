@@ -76,15 +76,15 @@ class PatientSearch extends Component {
           <form onSubmit={e => this.searchPatients(e)}>
             <TextField
               placeholder="Last Name"
-              onChange={this.setFilter.bind(this, 'firstName')}
+              onChange={() => this.setFilter.bind(this, 'firstName')}
             />
             <TextField
               placeholder="First Name"
-              onChange={this.setFilter.bind(this, 'lastName')}
+              onChange={() => this.setFilter.bind(this, 'lastName')}
             />
             <TextField
               placeholder="EMPI"
-              onChange={this.setFilter.bind(this, 'empi')}
+              onChange={() => this.setFilter.bind(this, 'empi')}
             />
             <RaisedPrimaryButton type="submit">Search</RaisedPrimaryButton>
           </form>

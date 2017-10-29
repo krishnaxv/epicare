@@ -25,25 +25,25 @@ const optionList = [
     id: 1,
     displayName: 'Calender',
     icon: 'perm_contact_calendar',
-    linkTo: 'calender'
+    linkTo: '/'
   },
   {
     id: 2,
     displayName: 'Search',
     icon: 'search',
-    linkTo: 'search'
+    linkTo: '/search'
   },
   {
     id: 3,
     displayName: 'Profile',
     icon: 'person',
-    linkTo: 'profile'
+    linkTo: '/'
   },
   {
     id: 4,
     displayName: 'Chat',
     icon: 'message',
-    linkTo: 'chat'
+    linkTo: '/chat'
   }
 ];
 
