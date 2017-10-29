@@ -10,6 +10,11 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+a {
+  text-decoration: none;
+  color: #008cdd;
+}
+
 body,
 p {
   font-size: 1.4rem;

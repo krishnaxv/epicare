@@ -11,6 +11,7 @@
     "react-scripts": "^1.0.13"
   },
   "dependencies": {
+    "@material/list": "^0.23.0",
     "@material/button": "^0.23.0",
     "@material/dialog": "^0.23.0",
     "@material/select": "^0.23.0",
