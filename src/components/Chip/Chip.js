@@ -7,15 +7,26 @@ const Wrapper = styled.div`
   align-items: center;
   padding: 5px 10px;
   border-radius: 32px;
+  font-size: 1.6rem;
 
   &.chip.primary {
     background-color: #80184c;
     color: #fff;
   }
+
+  &.chip.warning {
+    background-color: #feaf0d;
+    color: #fff;
+  }
+
+  &.chip.alert {
+    background-color: #d93737;
+    color: #fff;
+  }
 `;
 
 const Icon = styled.i`
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   margin-right: 8px;
 `;
 
