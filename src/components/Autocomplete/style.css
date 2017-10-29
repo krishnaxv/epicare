@@ -1,0 +1,56 @@
+.autocomplete {
+  position: relative;
+  width: 100%;
+}
+
+.autocomplete .mdc-list {
+  overflow-y: auto;
+  position: absolute;
+  top: 45px;
+  left: 0;
+  background-color: #fff;
+  width: 100%;
+  z-index: 7;
+  padding: 0;
+}
+
+.autocomplete .mdc-list .mdc-list-item {
+  cursor: pointer;
+}
+
+.autocomplete .mdc-list .mdc-list-item:hover {
+  background-color: #e5e5e5;
+}
+
+.autocomplete .mdc-list-item__content {
+  padding: 0 16px;
+}
+
+.autocomplete--mobile {
+  position: fixed;
+  height: 100vh;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100vw;
+  margin-left: 0 !important;
+}
+
+.autocomplete--mobile .app-textfield--wrapper {
+  padding-top: 8px;
+}
+
+.autocomplete--mobile input {
+  color: #000 !important;
+}
+
+.autocomplete--mobile input,
+.autocomplete--mobile .mdc-textfield__label {
+  margin: auto 8px;
+}
+
+.autocomplete--mobile .mdc-list {
+  height: 100%;
+  width: 100%;
+}

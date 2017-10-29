@@ -17,16 +17,25 @@ class DayView extends Component {
       <ul>
         {map(timeslotOffsetList, (timeOffsetMS, index) => {
           const time =
-            toInteger(format(startOfDayTS, 'x')) + +toInteger(timeOffsetMS);
+            toInteger(format(startOfDayTS, 'x')) + toInteger(timeOffsetMS);
           const timeOffset = format(new Date(time), 'HH:mm A');
 
           // Format prop
-          const event = chain(this.props.eventList)
-            .filter((event, index) => time === event.startTime)
-            .first()
-            .assignIn({ timeOffset: toString(timeOffset) })
-            .value();
-          return <DayViewItem key={index} event={event} />;
+          const eventItem = {
+            event: chain(this.props.eventList)
+              .filter(event => time === event.startTime)
+              .first()
+              .value(),
+            timeOffset: toString(timeOffset)
+          };
+
+          return (
+            <DayViewItem
+              key={index}
+              item={eventItem}
+              onClick={this.props.onClick}
+            />
+          );
         })}
       </ul>
     );
