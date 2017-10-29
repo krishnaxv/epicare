@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { map } from 'lodash';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const List = styled.ul`
   display: flex;
@@ -26,8 +26,10 @@ const ListItem = styled.li`
 
 const ListLink = ({ icon, displayName, linkTo }) => (
   <ListItem>
-    <Icon className="material-icons">{icon}</Icon>
-    {/* <p>{displayName}</p> */}
+    <Link to={linkTo}>
+      <Icon className="material-icons">{icon}</Icon>
+      {/* <p>{displayName}</p> */}
+    </Link>
   </ListItem>
 );
 
