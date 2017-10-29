@@ -5,7 +5,6 @@ import { EventView } from './';
 const Wrapper = styled.li`
   display: flex;
   align-items: center;
-  padding: 0 8px;
 `;
 
 const Time = styled.div`
@@ -15,6 +14,7 @@ const Time = styled.div`
 `;
 
 const Event = styled.div`
+  position: relative;
   width: 100%;
   border-bottom: 1px solid #e5e5e5;
   margin-left: 8px;
@@ -29,13 +29,12 @@ class DayViewItem extends Component {
   addEvent() {}
 
   render() {
-    const { event, onClick } = this.props;
-    console.log(event);
+    const { item, onClick } = this.props;
     return (
       <Wrapper>
-        <Time>{event.timeOffset}</Time>
-        <Event onClick={() => onClick()}>
-          <EventView>{event.title}</EventView>
+        <Time>{item.timeOffset}</Time>
+        <Event onClick={onClick}>
+          {item.event && <EventView event={item.event} />}
         </Event>
       </Wrapper>
     );
